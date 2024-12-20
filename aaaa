@@ -1,0 +1,15 @@
+private String convertToIsoDate(String date) {
+    try {
+        // Parse input date in dd-MM-yyyy format
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate localDate = LocalDate.parse(date, inputFormatter);
+
+        // Format date in yyyy-MM-dd format
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return localDate.format(outputFormatter);
+    } catch (DateTimeParseException e) {
+        // Handle parsing errors if needed
+        System.err.println("Invalid date format: " + date);
+        return date; // Return original if parsing fails
+    }
+}
